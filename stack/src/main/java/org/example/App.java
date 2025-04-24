@@ -13,5 +13,9 @@ public class App {
         }
 
         stack.displayNodes();
+
+        stack.removeNode();
+        stack.removeNode();
+        stack.displayNodes();
     }
 }
