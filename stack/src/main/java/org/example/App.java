@@ -2,12 +2,16 @@ package org.example;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
 
         Stack stack = new Stack();
-        Node node = new Node(1, null);
 
-        stack.insertNode(node);
+        int i = 0;
+        while (i <= 10) {
+            if(i == 0) stack.insertNode(new Node(i, null));
+            else stack.insertNode(new Node(i, stack.getTop()));
+            i++;
+        }
 
+        stack.displayNodes();
     }
 }
