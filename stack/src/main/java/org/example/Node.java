@@ -11,4 +11,8 @@ public class Node {
     public Node getNext() {
         return this.next;
     }
+
+    public void setNext(Node node) {
+        this.next = node;
+    }
 }
