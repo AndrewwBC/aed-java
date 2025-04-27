@@ -1,6 +1,6 @@
 package org.example;
 
-public class SingleLinkedList implements SingleListBehavior {
+public class SingleLinkedList implements SingleLinkedListBehavior {
 
     private Node first;
 
