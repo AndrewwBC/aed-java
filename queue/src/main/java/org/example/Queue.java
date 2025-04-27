@@ -14,14 +14,13 @@ public class Queue implements QueueBehavior {
     }
 
     @Override
-    public Node removeNode(Node nodeToIterate) {
-        if(nodeToIterate.getNext().getNext() == null) {
-            Node removedNode = nodeToIterate.getNext().getNext();
-            nodeToIterate.setNext(null);
-            return removedNode;
-        } else {
-            return this.removeNode(nodeToIterate.getNext());
-        }
+    public Node removeNode() {
+        Node node = this.front;
+
+        if(this.front.getNext() == null) this.front = null;
+        else this.front = this.front.getNext();
+
+        return node;
     }
 
     private Node iterateQueue(Node nodeToIterate, Node nodeToInsertInQueue) {
