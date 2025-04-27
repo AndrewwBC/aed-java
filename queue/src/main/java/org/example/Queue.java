@@ -28,4 +28,15 @@ public class Queue implements QueueBehavior {
     public Node removeNode() {
         return null;
     }
+
+    public void displayQueue() {
+
+        Node nodeToIterate = this.front;
+
+        while(nodeToIterate != null) {
+            System.out.println(nodeToIterate.getInfo());
+            nodeToIterate = nodeToIterate.getNext();
+        }
+
+    }
 }

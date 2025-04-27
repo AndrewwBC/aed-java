@@ -2,6 +2,18 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        int i = 1;
+
+        Queue queue = new Queue();
+
+        while(i <= 10) {
+            Node node = new Node(i, null);
+            queue.insertNode(node);
+            i++;
+        }
+
+        queue.displayQueue();
+
     }
 }
