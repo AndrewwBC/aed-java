@@ -31,7 +31,15 @@ public class SingleLinkedList implements SingleLinkedListBehavior {
     }
 
     @Override
-    public void insertAfter() {
+    public void insertAfter(Node referenceNode, Node nodeToInsert) {
+        if(referenceNode == null || nodeToInsert == null) {
+            throw new IllegalArgumentException("Reference node must not be null");
+        }
+
+        Node originalNextOfReferenceNode = referenceNode.getNext();
+        referenceNode.setNext(nodeToInsert);
+
+        nodeToInsert.setNext(originalNextOfReferenceNode);
     }
 
     @Override
