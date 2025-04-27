@@ -43,7 +43,7 @@ public class SingleLinkedList implements SingleLinkedListBehavior {
     }
 
     @Override
-    public void insertBefore() {
+    public void insertBefore(Node referenceNode, Node nodeToInsert) {
     }
 
     private Node insertRecursive(Node nodeToIterate, Node nodeToInsert) {
