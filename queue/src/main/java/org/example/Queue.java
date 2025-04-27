@@ -1,9 +1,15 @@
 package org.example;
 
-public class Queue {
+public class Queue implements QueueBehavior {
 
-    private Node front;
+    private Node front = null;
 
-    private Node back;
+    @Override
+    public void insertNode(Node node) {
+    }
 
+    @Override
+    public Node removeNode() {
+        return null;
+    }
 }
