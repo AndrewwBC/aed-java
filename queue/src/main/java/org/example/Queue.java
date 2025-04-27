@@ -9,6 +9,7 @@ public class Queue implements QueueBehavior {
     public void insertNode(Node nodeToInsertInQueue) {
         if (this.front == null) {
             this.front = nodeToInsertInQueue;
+            this.back = nodeToInsertInQueue;
         }
         else {
             this.iterateQueue(this.front, nodeToInsertInQueue);
@@ -29,6 +30,7 @@ public class Queue implements QueueBehavior {
         if (nodeToIterate.getNext() != null) return this.iterateQueue(nodeToIterate.getNext(), nodeToInsertInQueue);
         else {
             nodeToIterate.setNext(nodeToInsertInQueue);
+            this.back = nodeToInsertInQueue;
             return nodeToIterate;
         }
     }
@@ -39,7 +41,7 @@ public class Queue implements QueueBehavior {
 
         while(nodeToIterate != null) {
 
-            if(nodeToIterate.getNext() == null) System.out.println(nodeToIterate.getInfo());
+            if(nodeToIterate.getNext() == null) System.out.println(nodeToIterate.getInfo() + " - " + this.back.getInfo());
             else System.out.println(nodeToIterate.getInfo() + " - " + nodeToIterate.getNext().getInfo());
 
             nodeToIterate = nodeToIterate.getNext();

@@ -10,7 +10,6 @@ public class Main {
         while(i <= 10) {
             Node node = new Node(i, null);
             queue.insertNode(node);
-
             i++;
         }
 
