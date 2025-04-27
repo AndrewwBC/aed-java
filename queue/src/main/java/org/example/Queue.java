@@ -8,23 +8,28 @@ public class Queue implements QueueBehavior {
     public void insertNode(Node nodeToInsertInQueue) {
         if (this.front == null) this.front = nodeToInsertInQueue;
         else {
-            this.iterateQueueRecursive(this.front, nodeToInsertInQueue);
+            this.iterateQueue(this.front, nodeToInsertInQueue);
         }
 
     }
 
     @Override
-    public Node removeNode() {
-        return null;
+    public Node removeNode(Node nodeToIterate) {
+        if(nodeToIterate.getNext().getNext() == null) {
+            Node removedNode = nodeToIterate.getNext().getNext();
+            nodeToIterate.setNext(null);
+            return removedNode;
+        } else {
+            return this.removeNode(nodeToIterate.getNext());
+        }
     }
 
-    public Node iterateQueueRecursive(Node nodeToIterate, Node nodeToInsertInQueue) {
-        if (nodeToIterate.getNext() != null) return this.iterateQueueRecursive(nodeToIterate.getNext(), nodeToInsertInQueue);
+    private Node iterateQueue(Node nodeToIterate, Node nodeToInsertInQueue) {
+        if (nodeToIterate.getNext() != null) return this.iterateQueue(nodeToIterate.getNext(), nodeToInsertInQueue);
         else {
             nodeToIterate.setNext(nodeToInsertInQueue);
             return nodeToIterate;
         }
-
     }
 
     public void displayQueue() {

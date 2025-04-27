@@ -4,7 +4,7 @@ public interface QueueBehavior {
 
     public void insertNode(Node node);
 
-    public Node removeNode();
+    public Node removeNode(Node node);
 
     public void displayQueue();
 }
