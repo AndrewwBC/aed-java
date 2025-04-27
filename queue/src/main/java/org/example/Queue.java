@@ -3,16 +3,18 @@ package org.example;
 public class Queue implements QueueBehavior {
 
     private Node front = null;
+    private Node back = null;
 
     @Override
     public void insertNode(Node nodeToInsertInQueue) {
-        if (this.front == null) this.front = nodeToInsertInQueue;
+        if (this.front == null) {
+            this.front = nodeToInsertInQueue;
+        }
         else {
             this.iterateQueue(this.front, nodeToInsertInQueue);
         }
 
     }
-
     @Override
     public Node removeNode() {
         Node node = this.front;
@@ -36,7 +38,10 @@ public class Queue implements QueueBehavior {
         Node nodeToIterate = this.front;
 
         while(nodeToIterate != null) {
-            System.out.println(nodeToIterate.getInfo());
+
+            if(nodeToIterate.getNext() == null) System.out.println(nodeToIterate.getInfo());
+            else System.out.println(nodeToIterate.getInfo() + " - " + nodeToIterate.getNext().getInfo());
+
             nodeToIterate = nodeToIterate.getNext();
         }
     }
