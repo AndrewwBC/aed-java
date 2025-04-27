@@ -8,18 +8,7 @@ public class Queue implements QueueBehavior {
     public void insertNode(Node nodeToInsertInQueue) {
         if (this.front == null) this.front = nodeToInsertInQueue;
         else {
-            Node nodeToIterate = this.front;
-
-            while (nodeToIterate != null) {
-
-                if (nodeToIterate.getNext() == null) {
-                    nodeToIterate.setNext(nodeToInsertInQueue);
-                    break;
-                }
-
-                nodeToIterate = nodeToIterate.getNext();
-            }
-
+            this.iterateQueueRecursive(this.front, nodeToInsertInQueue);
         }
 
     }
@@ -27,6 +16,15 @@ public class Queue implements QueueBehavior {
     @Override
     public Node removeNode() {
         return null;
+    }
+
+    public Node iterateQueueRecursive(Node nodeToIterate, Node nodeToInsertInQueue) {
+        if (nodeToIterate.getNext() != null) return this.iterateQueueRecursive(nodeToIterate.getNext(), nodeToInsertInQueue);
+        else {
+            nodeToIterate.setNext(nodeToInsertInQueue);
+            return nodeToIterate;
+        }
+
     }
 
     public void displayQueue() {
@@ -37,6 +35,5 @@ public class Queue implements QueueBehavior {
             System.out.println(nodeToIterate.getInfo());
             nodeToIterate = nodeToIterate.getNext();
         }
-
     }
 }
