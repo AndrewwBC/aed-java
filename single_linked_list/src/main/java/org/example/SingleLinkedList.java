@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class SingleLinkedList implements SingleLinkedListBehavior {
 
     private Node first;
@@ -44,6 +46,23 @@ public class SingleLinkedList implements SingleLinkedListBehavior {
 
     @Override
     public void insertBefore(Node referenceNode, Node nodeToInsert) {
+        if(this.first.getNext() == null || Objects.equals(this.first, referenceNode)) {
+            Node originalFirst = this.first;
+            this.first = nodeToInsert;
+            this.first.setNext(originalFirst);
+            return;
+        }
+
+        Node iterate = this.first;
+
+        while (iterate != null) {
+            if(Objects.equals(iterate.getNext(), referenceNode)) {
+                nodeToInsert.setNext(referenceNode);
+                iterate.setNext(nodeToInsert);
+                break;
+            }
+            iterate = iterate.getNext();
+        }
     }
 
     private Node insertRecursive(Node nodeToIterate, Node nodeToInsert) {
