@@ -46,29 +46,29 @@ public class DoublyLinkedList implements DoublyLinkedListBehavior {
 
     @Override
     public void insertBefore(Node referenceNode, Node nodeToInsert) {
+
         if(this.first.getNext() == null || Objects.equals(this.first, referenceNode)) {
             Node originalFirst = this.first;
             this.first = nodeToInsert;
             this.first.setNext(originalFirst);
+            originalFirst.setBefore(this.first);
             return;
         }
 
-        Node iterate = this.first;
+        Node originalBeforeReferenceNode = referenceNode.getBefore();
+        originalBeforeReferenceNode.setNext(nodeToInsert);
 
-        while (iterate != null) {
-            if(Objects.equals(iterate.getNext(), referenceNode)) {
-                nodeToInsert.setNext(referenceNode);
-                iterate.setNext(nodeToInsert);
-                break;
-            }
-            iterate = iterate.getNext();
-        }
+        nodeToInsert.setBefore(originalBeforeReferenceNode);
+        nodeToInsert.setNext(referenceNode);
+
+        referenceNode.setBefore(nodeToInsert);
     }
 
     private Node insertRecursive(Node nodeToIterate, Node nodeToInsert) {
         if(nodeToIterate.getNext() != null) return this.insertRecursive(nodeToIterate.getNext(), nodeToInsert);
         else {
             nodeToIterate.setNext(nodeToInsert);
+            nodeToInsert.setBefore(nodeToIterate);
             return nodeToInsert;
         }
     }
@@ -79,6 +79,7 @@ public class DoublyLinkedList implements DoublyLinkedListBehavior {
         while(nodeToIterate != null) {
 
             if(nodeToIterate.getNext() == null) System.out.println(nodeToIterate.getInfo());
+            else if(nodeToIterate.getBefore() != null) System.out.println(nodeToIterate.getBefore().getInfo() + " - " + nodeToIterate.getInfo() + " - " + nodeToIterate.getNext().getInfo());
             else System.out.println(nodeToIterate.getInfo() + " - " + nodeToIterate.getNext().getInfo());
 
             nodeToIterate = nodeToIterate.getNext();

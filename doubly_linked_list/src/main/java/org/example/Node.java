@@ -7,7 +7,16 @@ public class Node {
 
     public Node(Integer info, Node before, Node next) {
         this.info = info;
+        this.before = before;
         this.next = next;
+    }
+
+    public void setBefore(Node before) {
+        this.before = before;
+    }
+
+    public Node getBefore() {
+        return before;
     }
 
     public void setInfo(Integer info) {
