@@ -1,8 +1,12 @@
 package org.example.HashTable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HashTable {
-    private List<HashTableElements> elements = new ArrayList<>();
+    private Map<Integer, HashTableElements> elements = new HashMap<>();
+
+
 }
